@@ -1,0 +1,125 @@
+module HEX(clk, reset, in, hex0, hex1);
+	input logic clk, reset; 
+	input logic [4:0] in;
+	output logic [6:0] hex0, hex1;
+	logic [6:0] temp0, temp1;
+	
+	enum logic [6:0] {zero = 7'b1000000, one=7'b1111001, two=7'b0100100, 
+	three = 7'b0110000, four = 7'b0011001, five = 7'b0010010, six= 7'b0000010, 
+	seven = 7'b1111000, eight= 7'b0000000, nine= 7'b0010000}
+	
+	always_ff @(posedge clk) begin
+		if (reset) begin
+			temp0 <= zero;
+			temp1 <= zero;
+		end
+		else if (in = 5'b0) begin
+			temp0 <= zero;
+			temp1 <= 7'b1111010;
+		end
+		else if (in 5'b1) begin
+			temp0 <= one;
+			temp1 <= zero;
+		end
+		else if (in 5'b2) begin
+			temp0 <= two;
+			temp1 <= zero;
+		end
+		else if (in 5'b3) begin
+			temp0 <= three;
+			temp1 <= zero;
+		end
+		else if (in 5'b4) begin
+			temp0 <= four;
+			temp1 <= zero;
+		end
+		else if (in 5'b5) begin
+			temp0 <= five;
+			temp1 <= zero;
+		end
+		else if (in 5'b6) begin
+			temp0 <= six;
+			temp1 <= zero;
+		
+		else if (in 5'b7) begin
+			temp0 <= seven;
+			temp1 <= zero;
+		end
+		else if (in 5'b8) begin
+			temp0 <= eight;
+			temp1 <= zero;
+		end
+		else if (in 5'b9) begin
+			temp0 <= nine;
+			temp1 <= zero;
+		end
+		else if (in = 5'b10) begin
+			temp0 <= zero;
+			temp1 <= one;
+		end
+		else if (in 5'b11) begin
+			temp0 <= one;
+			temp1 <= one;
+		end
+		else if (in 5'b12) begin
+			temp0 <= two;
+			temp1 <= one;
+		end
+		else if (in 5'b13) begin
+			temp0 <= three;
+			temp1 <= one;
+		end
+		else if (in 5'b14) begin
+			temp0 <= four;
+			temp1 <= one;
+		end
+		else if (in 5'b15) begin
+			temp0 <= five;
+			temp1 <= one;
+		end
+		else if (in 5'b16) begin
+			temp0 <= six;
+			temp1 <= one;
+		
+		else if (in 5'b17) begin
+			temp0 <= seven;
+			temp1 <= one;
+		end
+		else if (in 5'b18) begin
+			temp0 <= eight;
+			temp1 <= one;
+		end
+		else if (in 5'b19) begin
+			temp0 <= nine;
+			temp1 <= one;
+		end
+		else if (in = 5'b20) begin
+			temp0 <= zero;
+			temp1 <= two;
+		end
+		else if (in 5'b21) begin
+			temp0 <= one;
+			temp1 <= two;
+		end
+		else if (in 5'b22) begin
+			temp0 <= two;
+			temp1 <= two;
+		end
+		else if (in 5'b23) begin
+			temp0 <= three;
+			temp1 <= two;
+		end
+		else if (in 5'b24) begin
+			temp0 <= four;
+			temp1 <= two;
+		end
+		else if (in 5'b25) begin
+			temp0 <= five;
+			temp1 <= two;
+		end
+	end 
+	
+	assign hex0 = temp0;
+	assign hex1 = temp1;
+	
+endmodule 

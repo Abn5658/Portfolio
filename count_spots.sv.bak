@@ -1,0 +1,19 @@
+module count_spots(clk, reset, gate_open, gate_closed, current_occ); 
+	input logic reset, clk; 
+	input logic car1, car2, car3; 
+	output logic [2:0] current_occ; 
+	logic [2:0] occupant;
+	
+	always_ff @(posedge clk) begin 
+		if (reset) begin 
+			occupant <= 3;
+		end else begin 
+			if (gate_open)
+				occupant <= occupant - 1; 
+			if (gate_closed) 
+				occupant <= occupant + 1; 
+		end
+	end
+	
+	assign current_occ = occupant;
+endmodule 

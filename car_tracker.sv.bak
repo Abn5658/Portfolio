@@ -1,0 +1,19 @@
+module car_Tracker(clk, reset, in, full, car_in);
+	input logic clk, reset, in, full;
+	output logic [15:0] car_in;
+	logic car_in_internal;
+	
+	always_ff (@posedge clk) begin 
+		if (reset) 
+			car_in_internal <= 0; 
+		else begin 
+			if (in && ~full)
+			car_in_internal <=  car_in_internal + 1; 
+		end
+	
+	end
+	
+	assign car_in = car_in_internal;
+	
+	
+endmodule 
